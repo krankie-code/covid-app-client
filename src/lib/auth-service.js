@@ -3,14 +3,14 @@ import axios from 'axios'
 class Auth{
     constructor(){
         this.auth = axios.create({
-            baseURL:process.env.REACT_APP,
+            baseURL:'http://localhost:4000',
             withCredentials:true,
         })
     }
 
-    signup({username,password}){
+    signup({username,password, email, img}){
         return this.auth
-            .post('/auth/signup',{ username, password})
+            .post('/auth/signup',{ username, password, email, img})
             .then(({ data })=> data);
     }
     login({username, password}){
@@ -24,6 +24,7 @@ class Auth{
     me(){
         return this.auth.get('/auth/me').then(({ data })=> data);
     }
+    
 }
 
 const axiosRequestFunctions = new Auth();

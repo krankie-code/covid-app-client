@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";	
+
 
 class Navbar extends Component {
   render() {
-    // const { user, logout, isLoggedin } = this.props;
+    const { user, logout, isLoggedin } = this.props;
+   /*  console.log(this.props) */
     return (
       <nav className='navbar'>
         <Link to={"/home"} id='home-btn'>
         <button className='navbar-button'>Home</button>
 
         </Link>
-        {false ? (
+        {isLoggedin ? (
           <>
-            <p className='navbar-user'>username:</p>
-            <button className='navbar-button'>Logout</button>
+            <p className='navbar-user'>username:{user.username}</p>
+            <button className='navbar-button' onClick ={logout}>Logout</button>
           </>
         ) : (
           <>
@@ -31,4 +34,47 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withAuth(Navbar);
+
+/* 
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+
+import VideogameAssetIcon from '@material-ui/icons/VideogameAsset';
+import PublicIcon from '@material-ui/icons/Public';
+import PersonIcon from '@material-ui/icons/Person';
+
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+  },
+});
+
+export default function SimpleBottomNavigation() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  return (
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+      showLabels
+      className={classes.root}
+    >
+    <Link to="/game">
+      <BottomNavigationAction label="Game" icon={<VideogameAssetIcon />} />
+    </Link>
+    <Link to="/home">
+      <BottomNavigationAction label="Home" icon={<PublicIcon />} />
+    </Link>
+    <Link to="/user"
+      <BottomNavigationAction label="User" icon={<PersonIcon />} />
+    </Link>
+    </BottomNavigation>
+  );
+}
+*/

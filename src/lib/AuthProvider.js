@@ -41,9 +41,9 @@ componentDidMount() {
   }
 
   signup = (user) => {
-    const { username, password } = user;
+    const { username, password, email, img} = user;
     
-    auth.signup({ username, password })
+    auth.signup({ username, password, email, img })
       .then((user) => this.setState({ isLoggedin: true, user}) )
       .catch(({response}) => this.setState({ message: response.data.statusMessage}));
   };

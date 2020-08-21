@@ -1,34 +1,62 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../lib/AuthProvider";	
+import { withAuth } from "../lib/AuthProvider";
+import service from "../lib/service"
+
 
 class Signin extends Component {
-  state = { username: "", password: "" };
+  state = { username: "", password: "" , email : "", img :''};
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
-    console.log('Signup -> form submit', { username, password });
+    const { username, password , email, img} = this.state;
+    /* console.log('Signup -> form submit', { username, password }); */
+    this.props.signup({username,password,email,img})
   };
 
   handleChange = event => {
-    const { name, value } = event.target;
+    const { name, value} = event.target;
     this.setState({ [name]: value });
   };
 
+  handleFileUpload = e =>{
+    console.log(e.target.files[0])
+
+    const uploadData = new FormData();
+
+    uploadData.append('img', e.target.files[0])
+    console.log(uploadData)
+    service.handleUpload(uploadData)
+      .then(response =>{
+        console.log(response,'response is')
+
+        this.setState({ img:response.secure_url})
+      })
+      .catch(err =>{
+        console.log('Error while uploading the file')
+      })
+  }
+
   render() {
-    const { username, password } = this.state;
+    const { username, password , email, img} = this.state;
     return (
       <div>
         <h1>Sign Up</h1>
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} >
 
           <label>Username:</label>
           <input type="text" name="username" value={username} onChange={this.handleChange} />
 
+          <label>Email</label>
+          <input type = 'text' name = 'email' value = {email} onChange={this.handleChange}/>
+
+
           <label>Password:</label>
           <input type="password" name="password" value={password} onChange={this.handleChange} />
+
+          <label>Image:</label>
+          <input type='file' value = {img} onChange = {(e)=> this.handleFileUpload(e)}/>
 
           <input type="submit" value="Signup" />
         </form>
@@ -40,7 +68,7 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default withAuth(Signin);
 
 
 
