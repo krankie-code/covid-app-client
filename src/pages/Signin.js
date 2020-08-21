@@ -56,7 +56,7 @@ class Signin extends Component {
           <input type="password" name="password" value={password} onChange={this.handleChange} />
 
           <label>Image:</label>
-          <input type='file' value = {img} onChange = {(e)=> this.handleFileUpload(e)}/>
+          <input type='file'  onChange = {(e)=> this.handleFileUpload(e)}/>
 
           <input type="submit" value="Signup" />
         </form>
