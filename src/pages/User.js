@@ -15,7 +15,7 @@ class User extends React.Component{
     
     componentDidMount() {
         console.log('Did component mount ?');
-        axios.get('http://localhost:4000/api/user')
+        axios.get('http://localhost:4000/api/user', { withCredentials:true})
           .then((res) => {       
               console.log(res)
             this.setState({users:res.data});
