@@ -17,19 +17,19 @@ class User extends React.Component{
         console.log('Did component mount ?');
         axios.get('http://localhost:4000/api/user', { withCredentials:true})
           .then((res) => {       
-              console.log(res)
+             /*  console.log(res) */
             this.setState({users:res.data});
           })
       }
     
     render() {
-       /*  const { users } = this.state;
-        console.log(users) */
+        const { users } = this.state;
+        console.log(users)
     return (
         <div >
-          {/*   {users.map( (player, index)=>{
+            {users.map( (player, index)=>{
                 return <CardPlayer key = {index} {...player} />
-            })} */}
+            })}
         </div>
         )
     }
