@@ -1,68 +1,152 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# COVID
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is an app to document adults and children about COVID-19 . 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## User Stories
 
-### `npm test`
+- **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Signup:** As an anon I can sign up in the platform so that I can start playing into competition
 
-### `npm run build`
+- **Login:** As a user I can login to the platform so that I can play competitions
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Logout:** As a user I can logout from the platform so no one else can use it
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- **View Global Dashboard** As a user I want to see the tournament table
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **View Countries Stats** As a user I can see the COVID-19 stats of every country
 
-### `npm run eject`
+- **Play a mini-game** As a user I can play a mini-game
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ****
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Backlog
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+User profile:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- add some music
+- change game mode to FFA
+- Add recent news
+- Points system and rewards
+- More components not just COVID bubbles
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Client / Frontend
 
-### Code Splitting
+## React Router Routes (React App)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+| Path           | Component  | Permissions             | Behavior                                                     |
+| -------------- | ---------- | ----------------------- | ------------------------------------------------------------ |
+| `/`            | Welcome    | public `<Route>`        | Home page                                                    |
+| `/login`       | Login      | public `<Route>`        | Login                                                        |
+| `/signup`      | Signup     | public `<Route>`        | Signup                                                       |
+| `/difficulty`  | ChooseDiff | public `<Route>`        | Selector                                                     |
+| `/signup`      | SignupPage | anon only `<AnonRoute>` | Signup form, link to login, navigate to game mode.           |
+| `/login`       | LoginPage  | anon only `<AnonRoute>` | Login form, link to signup, navigate to game mode. Always pops up when user tries to play |
+| `/game`        | Game       | anon only `<AnonRoute>` | Mini-game displays                                           |
+| `/game/result` | Result     | anon only `<AnonRoute>` | Shows the mini-game resoult                                  |
+| /home          | Home       | anon only `<AnonRoute>` | Covid related info                                           |
+| /user          | User       | anon only `<AnonRoute>` | Dashboard of users and ranks                                 |
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- **LoginPage**
+- **SIgnUpPage**
+- **ChooseDifficulty**
+- **Game** / CovidBubble
+- **GameResult** / ImageBox / Replay / WorldItem
+- **TableRank** / UserBox 
+- **Home **/ SearchBarCountries/ CovidMap / NumbersDisplay
+- **Navbar** / WorldItem/VideogameItem/UserItem
 
-### Advanced Configuration
+## Services
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+  - auth.getUser() // synchronous
+- Countries Data
+  - countires.list()
+  - countries.detail(id)
+  - global
+- Player Service
+  - player.detail(id)
+- Game Service
+  - Game.put(id)
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+# Server / Backend
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Models
+
+User model
+
+```
+{
+  username: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  img: {type: String},
+  arrayScore: [{type: Schema.Types.ObjectId,ref:'Game'}],
+}
+```
+
+Game model
+
+```
+ {
+   score: {type: String, required: true},
+   userId:{type: Schema.Types.ObjectId,ref:'User'}
+ }
+```
+
+
+
+
+
+## API Endpoints (backend routes)
+
+| HTTP Method | URL                | Request Body            | Success status | Error Status | Description                                                  |
+| ----------- | ------------------ | ----------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET         | `/auth/profile`    | Saved session           | 200            | 404          | Check if user is logged in and return profile page           |
+| POST        | `/auth/signup`     | {name, email, password} | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`      | {username, password}    | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| POST        | `/auth/logout`     | (empty)                 | 204            | 400          | Logs out the us                                              |
+| POST        | `/result`          | {userId,score}          | 201            | 400          | Create and save a new result                                 |
+| GET         | `/users`           |                         |                | 400          | show players                                                 |
+| PUT         | `/user/edit`       | {name,img}              | 201            | 400          | edit player                                                  |
+| DELETE      | `/players/delete/` | {id}                    | 200            | 400          | delete player                                                |
+
+
+
+## Links
+
+### Trello/Kanban
+
+[Link to your trello board](https://trello.com/b/aAIAef2s/the-covid) or picture of your physical board
+
+### Git
+
+The url to your repository and to your deployed project
+
+[Client repository Link](https://github.com/krankie-code/covid-app-client)
+
+[Server repository Link](https://github.com/krankie-code/covid-app-server)
+
+[Deployed App Link](http://heroku.com/)
+
+### Slides
+
+The url to your presentation slides
+
+[Slides Link](http://slides.com/)
