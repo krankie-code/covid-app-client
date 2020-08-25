@@ -1,0 +1,15 @@
+.root{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+img{
+    width:100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 70%;
+    height:100px;
+    border:1px solid black
+}

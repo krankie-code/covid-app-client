@@ -1,3 +1,10 @@
+
+body{
+    /* background-image: url('https://namitoledo.org/wp-content/uploads/2018/09/virus-background-01.png');
+    position:fixed; */
+}
+
+
 .container{
     display: flex;
     align-items: center;

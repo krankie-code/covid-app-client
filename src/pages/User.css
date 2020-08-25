@@ -1,0 +1,14 @@
+.user-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@font-face{
+    font-family: 'Permanent Marker';
+    src: url('../font/PermanentMarker-Regular.ttf')
+}
+body{
+    font-family: 'Permanent Marker';
+    color:white;
+}

@@ -5,6 +5,7 @@ import Country from '../components/Country/Country'
 import styles from '../App.module.css'
 import { getData } from '../api/index'
 import { withAuth } from "../lib/AuthProvider";	
+import './User.css'
 
 
 

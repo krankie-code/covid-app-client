@@ -4,6 +4,7 @@ import { withAuth } from "../../lib/AuthProvider";
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset';
 import PublicIcon from '@material-ui/icons/Public';
@@ -11,10 +12,13 @@ import PersonIcon from '@material-ui/icons/Person';
 
 import styles from './Navbar.css'
 
-function Navbar() {
+function Navbar(props) {
   const [value, setValue] = React.useState(0);
+  const { user, logout, isLoggedin } = props;
+ console.log(props)
 
   return (
+    <div className = 'root'>
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -33,7 +37,11 @@ function Navbar() {
     <Link to="/user">
       <BottomNavigationAction label="User" icon={<PersonIcon />} />
     </Link>
+    {isLoggedin ? (
+      <BottomNavigationAction label="Logout" onClick ={logout} icon={<ExitToAppIcon />} />
+   ) : (false) }
     </BottomNavigation>
+    </div>
   );
 }
 export default withAuth(Navbar);
