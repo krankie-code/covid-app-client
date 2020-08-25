@@ -12,13 +12,15 @@ import Navbar from "./components/Navbar/Navbar";
 import AnonRoute from "./components/Routes/AnonRoute";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import styles from './App.module.css'
+import Game from './components/Game/Game'
+import results from './pages/results'
 
 class App extends Component {
   render() {
     return (
       <div>
       <AuthProvider>
-        <Navbar />
+        
 
         <Switch>
           <PrivateRoute exact path="/home" component={Home} />
@@ -26,6 +28,8 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
           <PrivateRoute exact path="/user" component={User} />
           <PrivateRoute exact path="/user/edit-profile" component={EditUser} />
+          <PrivateRoute path = '/game' component ={Game}/>
+          <PrivateRoute path='/results' component = {results} />
 
         </Switch>
       </AuthProvider>

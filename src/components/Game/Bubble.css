@@ -1,0 +1,13 @@
+.root{
+    border:1px solid black;
+    width:10px;
+    height:10px;
+}
+.bubble{
+    /* height: 50px;
+    width: 50px; */
+    border-radius:50%;
+    border:1px solid black;
+    background-color: grey;
+    position:absolute;
+}

@@ -1,36 +1,13 @@
-/* import React, { Component } from 'react'
-import { withAuth } from "../lib/AuthProvider";
 
-console.log()
-
-class EditUser extends Component {
-    render() {
-       
-        return (
-            <div>
-                <h1>Edit</h1>
-            </div>
-        )
-    }
-}
-export default withAuth(EditUser)
- */
 import axios from 'axios'
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import styles from "./EditUser.css";
 import { withAuth } from "../lib/AuthProvider";
-import Avatar from "@material-ui/core/Avatar";
-
+import Navbar from '../components/Navbar/Navbar';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+import './EditUser.css';
+import "./User.css";
 
 class EditUser extends React.Component {
   state = {
@@ -77,8 +54,9 @@ class EditUser extends React.Component {
 
     return (
       <div >
-        <div className='root'>
-        <img src = {img}></img>
+        <Navbar />
+        <div>
+          <img src = {img}></img>
         </div>
         <Typography variant="h6" gutterBottom>
           Your profile
@@ -122,30 +100,6 @@ class EditUser extends React.Component {
                 type = 'password'
               />
             </Grid>
-            
-            {/*  <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-          />
-        </Grid> */}
           </Grid>
           <input type="submit" value="Edit" />
         </form>

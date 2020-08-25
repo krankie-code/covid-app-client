@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../lib/AuthProvider";
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ function Navbar(props) {
  console.log(props)
 
   return (
-    <div className = 'root'>
+    
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -41,7 +41,7 @@ function Navbar(props) {
       <BottomNavigationAction label="Logout" onClick ={logout} icon={<ExitToAppIcon />} />
    ) : (false) }
     </BottomNavigation>
-    </div>
+   
   );
 }
 export default withAuth(Navbar);
