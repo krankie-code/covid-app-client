@@ -29,7 +29,7 @@ class Bubble5 extends Component {
     }
 
     reach50(){
-        if(this.state.count === 50){
+        if(this.state.count === 600){
             this.setState({
                 count:50,
             })
@@ -54,7 +54,7 @@ class Bubble5 extends Component {
     }
     } */
     render() {
-        if(this.state.count === 100){
+        if(this.state.count === 600){
             this.props.stopGame()
         }
         return (

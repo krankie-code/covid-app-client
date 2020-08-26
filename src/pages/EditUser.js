@@ -8,12 +8,14 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import './EditUser.css';
 import "./User.css";
+import service from '../lib/service'
 
 class EditUser extends React.Component {
   state = {
     username: "",
     email: "",
-    password:""
+    password:"",
+    img:""
   };
 
   handleFormSubmit = (event) => {
@@ -38,11 +40,31 @@ class EditUser extends React.Component {
         })
   }
 
+  handleFileUpload = e =>{
+    console.log(e.target.files[0])
+
+    const uploadData = new FormData();
+
+    uploadData.append('img', e.target.files[0])
+    console.log(uploadData)
+    service.handleUpload(uploadData)
+      .then(response =>{
+        console.log(response,'response is')
+
+        this.setState({ img:response.secure_url})
+      })
+      .catch(err =>{
+        console.log('Error while uploading the file')
+      })
+  }
+
+
   componentDidMount(){
     this.setState({
       username: this.props.user.username,
       email:this.props.user.email,
-      password:this.props.user.password
+      password:this.props.user.password,
+      img:this.props.user.img
     })
 
   }
@@ -101,6 +123,8 @@ class EditUser extends React.Component {
               />
             </Grid>
           </Grid>
+          <label>Image:</label>
+          <input name = 'img' type='file'  onChange = {(e)=> this.handleFileUpload(e)}/>
           <div className='input'>
           <input className = 'buttons' type="submit" value="Edit" />
           <button className ='buttons' onClick = {this.handleDelete}>Delete profile</button>

@@ -54,7 +54,7 @@ class Bubble2 extends Component {
     }
     } */
     render() {
-        if(this.state.count === 100){
+        if(this.state.count === 600){
             this.props.stopGame()
         }
         return (

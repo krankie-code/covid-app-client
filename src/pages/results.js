@@ -28,10 +28,7 @@ const Results = (props) => {
 
     const random = Math.floor(Math.random() * arrayPrevent.length + 1)
     const randomSentence = arrayPrevent[random]
-    console.log(random)
-    console.log(randomSentence)
 
-    
         var text;
        if(randomSentence){
            switch(random){
@@ -39,7 +36,7 @@ const Results = (props) => {
             text=alcohol;
                break;
            case 2:
-            text=distance;
+            text=distance2;
                break;
            case 3 :
             text=mask;
@@ -63,15 +60,21 @@ const Results = (props) => {
        }
    }
     
-
+   let finalCount = function convertToTime(count){
+    let  minutes = Math.floor(count / 60);
+    let seconds = count % 60;
+    seconds = seconds < 10 ? ('0'+seconds) : seconds;
+    minutes = minutes < 10 ? ('0'+ minutes) : minutes
+    return `${minutes}:${seconds}`;
+  }
    useEffect(()=>{
        gameService(count)
        
     },[])
     return (
         <div>
-             <h1>Hi mom</h1>
-                {count}
+             <h1>New Score!</h1>
+                <div>{finalCount(count)}</div>
                 <p>{randomSentence}</p>
                 <img src={text}></img>
         {console.log(text)}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { withAuth } from "../lib/AuthProvider";	
-
+import {withAuth} from '../lib/AuthProvider'
 
 class Login extends Component {
   state = { username: "", password: "" };
@@ -8,6 +7,7 @@ class Login extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password } = this.state;
+    /* console.log('Login -> form submit', { username, password }); */
     this.props.login({username,password})
   };
 

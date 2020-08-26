@@ -38,7 +38,7 @@ class Bubble extends Component {
 
     componentWillUnmount(){
         /* console.log(this.state) */
-       if(this.state.count == 50){
+       if(this.state.count === 600){
        return clearInterval(this.timer)
     }
     }
