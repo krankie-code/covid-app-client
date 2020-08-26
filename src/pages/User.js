@@ -16,7 +16,7 @@ class User extends React.Component {
   componentDidMount() {
     console.log("Did component mount ?");
     axios
-      .get("http://localhost:4000/api/user", { withCredentials: true })
+      .get(process.env.REACT_APP_API_URI +'/api/user', { withCredentials: true })
       .then((res) => {
         /*  console.log(res) */
         this.setState({ users: res.data.users, position: res.data.position });
@@ -29,13 +29,14 @@ class User extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className>
-        <div >
+        <div className='container'>
+        <div>
           <Link to="/user/edit-profile">
             <CardCurrentUser position={position} />
           </Link>
           <br />
         </div>
+        <h1 className = 'ranking'>Ranking</h1>
         {users.map((player, index) => {
           return <CardPlayer key={index} {...player} index={index} />;
         })}

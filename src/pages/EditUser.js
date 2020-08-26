@@ -20,7 +20,7 @@ class EditUser extends React.Component {
     event.preventDefault();
   
     console.log('Did component mount ?');
-    axios.put('http://localhost:4000/api/user/edit-profile',this.state ,{ withCredentials:true})
+    axios.put(process.env.REACT_APP_API_URI + '/api/user/edit-profile',this.state ,{ withCredentials:true})
       .then((res) => {       
         
         this.props.history.push('/user')
@@ -32,7 +32,7 @@ class EditUser extends React.Component {
   };
 
   handleDelete = () =>{
-    axios.delete('http://localhost:4000/api/user/edit-profile/delete',{ withCredentials:true})
+    axios.delete(process.env.REACT_APP_API_URI + '/api/user/edit-profile/delete',{ withCredentials:true})
         .then((res)=>{
           this.props.history.push('/login')
         })
@@ -55,7 +55,7 @@ class EditUser extends React.Component {
     return (
       <div >
         <Navbar />
-        <div>
+        <div className='text-align'>
           <img src = {img}></img>
         </div>
         <Typography variant="h6" gutterBottom>
@@ -101,10 +101,12 @@ class EditUser extends React.Component {
               />
             </Grid>
           </Grid>
-          <input type="submit" value="Edit" />
+          <div className='input'>
+          <input className = 'buttons' type="submit" value="Edit" />
+          <button className ='buttons' onClick = {this.handleDelete}>Delete profile</button>
+          </div>
         </form>
           
-        <button onClick = {this.handleDelete}>Delete profile</button>
           
         </div>
     );

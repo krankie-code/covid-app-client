@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = {
   root: {
-    background: 'linear-gradient(45deg, #1A2040 10%, #36549d 90%)',
+    backgroundImage: 'linear-gradient(to right, rgba(26, 32, 64,.7), rgba(54, 84, 157,.2))',
     borderRadius: 15,
     border: 0,
     color: 'white',

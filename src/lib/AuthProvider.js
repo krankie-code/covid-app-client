@@ -76,7 +76,7 @@ componentDidMount() {
       (<Provider value={{ isLoggedin, user, login, logout, signup}} >
          {this.props.children}
       </Provider>)
-    )	/*<Provider> "value={}" datos que estarán disponibles para todos los componentes <Consumer> */
+    )	
   }
 }
 

@@ -12,3 +12,18 @@ body{
     font-family: 'Permanent Marker';
     color:white;
 }
+.root{
+    border:1px solid black;
+}
+.container{
+    /* linear-gradient(to right, rgba(26, 32, 64,.7), rgba(54, 84, 157,.2)) */
+    background:/* linear-gradient(45deg, #1A2040 10%, #36549d 90%); */linear-gradient(to right, rgba(26, 32, 64,.7), rgba(54, 84, 157,.2));
+    padding: 2px 0;
+    margin-top: 20px;
+    border-radius:15px;
+    border:2px solid black;
+}
+.ranking{
+    margin:0;
+    margin-left:10px;
+}

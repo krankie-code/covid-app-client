@@ -11,3 +11,19 @@ img{
     border-spacing: none;
     
 }
+
+.text-align{
+  text-align: center;
+}
+
+.input{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top:30px;
+}
+.buttons{
+  padding:10px;
+  border-radius:5px;
+  /* box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', */
+}

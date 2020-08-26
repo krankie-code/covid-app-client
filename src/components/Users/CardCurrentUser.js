@@ -7,14 +7,14 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const styles = {
   root: {
-    background: 'linear-gradient(45deg, #1A2040 10%, #36549d 90%)',
+    background: 'linear-gradient(to right, rgba(26, 32, 64,.7), rgba(54, 84, 157,.2))',
     borderRadius: 15,
     border: 0,
     color: 'white',
     height: 68,
-    padding: '10px 30px',
+    padding: '10px 20px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    marginTop:'40px'
+    marginTop:'20px'
     
   },
 };

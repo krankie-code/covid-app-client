@@ -6,7 +6,7 @@ const AnonRoute = ({component:Component, isLoggedin, ...rest}) => {
     return (
         <Route 
           {...rest}
-          render={(props)=> !isLoggedin ? <Component {...props} /> : <Redirect to='/home/'/>}  
+          render={(props)=> !isLoggedin ? <Component {...props} /> : <Redirect to='/home'/>}  
 
         />
 

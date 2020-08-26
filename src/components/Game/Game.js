@@ -3,6 +3,7 @@ import BubbleHandler from './BubbleHandler'
 import BubbleHandler2 from './BubbleHandler2'
 
 
+
 export class Game extends Component {
   constructor(props){
     super(props)
@@ -40,7 +41,6 @@ stopGame =() =>{
         /* clearInterval(this.timer) */
          return this.props.history.push(`/results?count=${this.state.count}`) 
         
-
 }
 
 
