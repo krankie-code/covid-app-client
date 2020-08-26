@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styles from './Bubble.css'
+import virus2 from '../../images/—Pngtree—corona virus cartoon vector illustration_5336379.png'
+
 
 class Bubble extends Component {
     constructor(props){
@@ -23,7 +25,7 @@ class Bubble extends Component {
             left:Math.floor(Math.random()*200)})
     }
     componentDidMount(){
-        this.timer = setInterval(this.counter, 10000)
+        this.timer = setInterval(this.counter, 100)
       /*   console.log('Component did mount') */
     }
 
@@ -46,13 +48,13 @@ class Bubble extends Component {
         /* console.log(this.props.style.left) */
         return (
             <div className ={styles.bubble}>
-                <h1>{this.state.count}</h1>
-                <div className ='bubble' 
+                
+                <img src={virus2} className ='bubble' 
                 style = {{width :`${this.state.count}px`, height:`${this.state.count}px`,top:`${this.props.style.top}px`, left: `${this.props.style.left}px` } }
                 onClick = {()=>this.handleClick()}
                 >
 
-                </div>
+                </img>
             </div>
         )
     }

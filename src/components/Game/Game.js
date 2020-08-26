@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import BubbleHandler from './BubbleHandler'
 import BubbleHandler2 from './BubbleHandler2'
-
+import BubbleHandler3 from './BubbleHandler3'
+import BubbleHandler4 from './BubbleHandler4'
+import BubbleHandler5 from './BubbleHandler5'
 
 
 export class Game extends Component {
@@ -21,13 +23,6 @@ export class Game extends Component {
       })
   }
 
-  /* stateModifier(GG){
-    this.setState({
-      isRunning:GG,
-      count:this.state.count
-    })
-    
-  } */
 
   componentDidMount(){
     this.timer = setInterval(this.counter, 1000)
@@ -49,8 +44,11 @@ stopGame =() =>{
     return this.state.isRunning ?(
       <div>
       <h1>{this.state.count}</h1>
-        <BubbleHandler />
+        <BubbleHandler stopGame = {this.stopGame}/>
         <BubbleHandler2 stopGame = {this.stopGame}/>
+        <BubbleHandler3 stopGame = {this.stopGame}/>
+        <BubbleHandler4 stopGame = {this.stopGame}/>
+        <BubbleHandler5 stopGame = {this.stopGame}/>
     
       </div>
     ) : null

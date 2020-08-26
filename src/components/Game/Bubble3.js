@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styles from './Bubble.css'
 import { withRouter } from 'react-router-dom'
-import virus1 from '../../images/—Pngtree—orange mischief virus cute virus_5341821.png'
+import virus3 from '../../images/—Pngtree—corona virus cartoon vector_5344879.png'
 
-class Bubble2 extends Component {
+class Bubble3 extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -59,7 +59,7 @@ class Bubble2 extends Component {
         }
         return (
             <div className ={styles.bubble}>
-                <img src ={virus1} className ='bubble' 
+                <img src ={virus3} className ='bubble' 
                 style = {{width :`${this.state.count}px`, height:`${this.state.count}px`,top:`${this.props.style.top}px`, left: `${this.props.style.left}px` } }
                 onClick = {()=>this.handleClick()}
                 >
@@ -70,4 +70,4 @@ class Bubble2 extends Component {
     }
 }
 
-export default withRouter(Bubble2)
+export default withRouter(Bubble3)

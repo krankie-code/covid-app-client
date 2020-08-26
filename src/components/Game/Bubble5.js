@@ -3,7 +3,7 @@ import styles from './Bubble.css'
 import { withRouter } from 'react-router-dom'
 import virus1 from '../../images/—Pngtree—orange mischief virus cute virus_5341821.png'
 
-class Bubble2 extends Component {
+class Bubble5 extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -70,4 +70,4 @@ class Bubble2 extends Component {
     }
 }
 
-export default withRouter(Bubble2)
+export default withRouter(Bubble5)
