@@ -1,12 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { userService } from "../lib/userService";
 import CardPlayer from "../components/Users/CardPlayer";
 import CardCurrentUser from "../components/Users/CardCurrentUser";
+import Navbar from "../components/Navbar/Navbar";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import "./User.css";
-import Navbar from "../components/Navbar/Navbar";
 
 class User extends React.Component {
   state = {
@@ -16,7 +15,9 @@ class User extends React.Component {
   componentDidMount() {
     console.log("Did component mount ?");
     axios
-      .get(process.env.REACT_APP_API_URI +'/api/user', { withCredentials: true })
+      .get(process.env.REACT_APP_API_URI + "/api/user", {
+        withCredentials: true,
+      })
       .then((res) => {
         this.setState({ users: res.data.users, position: res.data.position });
       });
@@ -24,22 +25,22 @@ class User extends React.Component {
 
   render() {
     const { users, position } = this.state;
-   
+
     return (
       <div>
         <Navbar />
-        <div className='container'>
-        <div>
-          <Link to="/user/edit-profile">
-            <CardCurrentUser  position={position} />
-          </Link>
-          <br />
+        <div className="container">
+          <div>
+            <Link to="/user/edit-profile">
+              <CardCurrentUser position={position} />
+            </Link>
+            <br />
+          </div>
+          <h1 className="ranking">Ranking</h1>
+          {users.map((player, index) => {
+            return <CardPlayer key={index} {...player} index={index} />;
+          })}
         </div>
-        <h1 className = 'ranking'>Ranking</h1>
-        {users.map((player, index) => {
-          return <CardPlayer key={index} {...player} index={index} />;
-        })}
-      </div>
       </div>
     );
   }

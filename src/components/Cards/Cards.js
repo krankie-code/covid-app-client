@@ -7,11 +7,9 @@ import styles from './Cards.module.css'
 
 
  function Cards( { data : {confirmed, recovered,deaths,lastUpdate } } ) {
-     /* console.log(confirmed) */
      if(!confirmed){
          return 'Loading...'
      }
-     /* console.log(props) */
     return (
         <div className = {styles.container}>
            <Grid container spacing={2} justify='center'>

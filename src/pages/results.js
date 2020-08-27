@@ -4,23 +4,12 @@ import gameService from "../lib/gameService";
 import hands from "../images/hands.jpg";
 import alcohol from "../images/alcohol.jpg";
 import cough from "../images/cough.png";
-import coveryourcough from "../images/coveryourcough-1024x519.png";
-import distance from "../images/distance.jpg";
 import distance2 from "../images/distance2.jpg";
 import face from "../images/face-nose-eyes2.jpg";
 import fever from "../images/fever.png";
 import mask from "../images/mask.jpg";
 import home from "../images/home.jpg";
-import {
-  Card,
-  CardContent,
-  Typography,
-  CardActionArea,
-  CardActions,
-  CardMedia,
-  Button,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Card, CardContent, Typography, CardActionArea, CardActions, CardMedia, makeStyles} from "@material-ui/core";
 import "./results.css";
 import ReplayIcon from "@material-ui/icons/Replay";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
