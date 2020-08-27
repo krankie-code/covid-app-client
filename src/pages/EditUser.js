@@ -21,7 +21,7 @@ class EditUser extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
   
-    console.log('Did component mount ?');
+    console.log('Did component mount ?', this.state);
     axios.put(process.env.REACT_APP_API_URI + '/api/user/edit-profile',this.state ,{ withCredentials:true})
       .then((res) => {       
         
@@ -83,7 +83,7 @@ class EditUser extends React.Component {
         <Typography variant="h6" gutterBottom>
           Your profile
         </Typography>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField

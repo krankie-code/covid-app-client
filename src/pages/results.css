@@ -1,0 +1,15 @@
+.image{
+    border:none;
+    border-radius: 0%;
+    height:200px;
+    object-fit: cover;
+}
+.results{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+}

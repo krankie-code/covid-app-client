@@ -18,7 +18,6 @@ class User extends React.Component {
     axios
       .get(process.env.REACT_APP_API_URI +'/api/user', { withCredentials: true })
       .then((res) => {
-        /*  console.log(res) */
         this.setState({ users: res.data.users, position: res.data.position });
       });
   }
@@ -32,7 +31,7 @@ class User extends React.Component {
         <div className='container'>
         <div>
           <Link to="/user/edit-profile">
-            <CardCurrentUser position={position} />
+            <CardCurrentUser  position={position} />
           </Link>
           <br />
         </div>

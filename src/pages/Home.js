@@ -41,7 +41,7 @@ class Home extends Component {
                 <h1>Welcome</h1>
                <Country handleCountryChange = {this.handleCountryChange}/>
                <Cards data={data} className={styles.container}/>
-               <Chart/>
+               {/* <Chart/> */}
             </div>
             </div>
         )}

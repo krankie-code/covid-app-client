@@ -1,0 +1,21 @@
+.paper{
+    margin-top:8;
+    display: 'flex';
+    align-items: 'center';
+    justify-content: center;
+  }
+  .avatar {
+    position: relative;
+    left: 45%;
+    margin-top: 50px;
+   
+  }
+  form{
+    width: '100%';
+    /* marginTop: theme.spacing(1), */
+  }
+ 
+  .log{
+    text-align: center;
+  }
+  

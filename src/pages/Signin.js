@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import service from "../lib/service"
+import classes from './Login.css'
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 
 class Signin extends Component {
@@ -10,7 +22,6 @@ class Signin extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password , email, img} = this.state;
-    /* console.log('Signup -> form submit', { username, password }); */
     this.props.signup({username,password,email,img})
   };
 
@@ -39,80 +50,108 @@ class Signin extends Component {
 
   render() {
     const { username, password , email, img} = this.state;
+    console.log(this.props)
     return (
-      <div>
-        <h1>Sign Up</h1>
-
-        <form onSubmit={this.handleFormSubmit} >
-
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
-
-          <label>Email</label>
-          <input type = 'text' name = 'email' value = {email} onChange={this.handleChange}/>
-
-
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-
-          <label>Image:</label>
-          <input type='file'  onChange = {(e)=> this.handleFileUpload(e)}/>
-
-          <input type="submit" value="Signup" />
+      
+      <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className='avatar'>
+          <LockOutlinedIcon />
+        </Avatar>
+        <h1 className='log'>Signup</h1>
+        <form className={classes.form} onSubmit={this.handleFormSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="uname"
+                name="username"
+                variant="outlined"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                autoFocus
+                value={username} 
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value = {email} 
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid>
+            <label>Image:</label>
+          <input name = 'img' type='file'  onChange = {(e)=> this.handleFileUpload(e)}/>
+             
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link to={'/login'}>
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
         </form>
-        
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
       </div>
-    );
-  }
-}
-
-export default withAuth(Signin);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React, { Component } from 'react'
-import { FormControl,InputLabel,Input,FormHelperText } from '@material-ui/core'
-
-
-class Signup extends Component {
-    state = {username : '', password : ''}
-
-    render() {
-        const {usermame, password} = this.state
-        return (
-            <div>
-                <h1>Login</h1>
-                <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <InputLabel htmlFor="my-input">Username</InputLabel>
-                    <InputLabel htmlFor="my-input">Password</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                </FormControl>
-            </div>
-        )
+      <Box mt={5}>
+      {this.props.nameExistsMessage ? (<p>{this.props.nameExistsMessage}</p>) : null }
+      </Box>
+    </Container>
+      );
     }
-}
+  }
+  
+  export default withAuth(Signin);
+  
 
-export default Signup
- */
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

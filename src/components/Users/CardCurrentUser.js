@@ -23,12 +23,12 @@ const useStyles = makeStyles(styles)
 
 
 function CardPlayer(props) {
-    const {position} = props
-    const classes = useStyles();
+
+  const {position} = props
+  const classes = useStyles();
     const {arrayScore} = props.user
-    console.log(props)
     return (
-        <div >
+        <div>
        
         <Box className ={classes.root} display="flex" alignItems="center" justifyContent="space-between" m={1} p={1}>
           <Box p={1} >

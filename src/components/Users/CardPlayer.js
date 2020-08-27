@@ -26,7 +26,7 @@ function CardPlayer(props) {
     return (
         <div style={{ width: '100%' }}>
        
-        <Box className={classes.root} display="flex" alignItems="center" justifyContent="space-around" m={1} p={1}>
+        <Box className={classes.root} display="flex" alignItems="center" justifyContent="space-between" m={1} p={1}>
           <Box p={1} >
             {index + 1}
           </Box>
@@ -36,8 +36,8 @@ function CardPlayer(props) {
           <Box p={1} >
             @{username}
           </Box>
-          <Box p={1}  flexGrow ={10}>
-            {/* {Math.max(arrayScore.score)} */}{Math.max.apply(Math, arrayScore.map(function(o) { return o.score; }))}
+          <Box p={1} >
+            {Math.max.apply(Math, arrayScore.map(function(o) { return o.score; }))}
           </Box>
         </Box>
        

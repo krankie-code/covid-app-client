@@ -14,6 +14,7 @@ import PrivateRoute from "./components/Routes/PrivateRoute";
 import styles from './App.module.css'
 import Game from './components/Game/Game'
 import results from './pages/results'
+import Welcome from './pages/Welcome'
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
           <PrivateRoute exact path="/user/edit-profile" component={EditUser} />
           <PrivateRoute path = '/game' component ={Game}/>
           <PrivateRoute path='/results' component = {results} />
+          <AnonRoute exact path ='/' component = {Welcome}/>
 
         </Switch>
       </AuthProvider>
