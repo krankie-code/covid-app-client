@@ -17,6 +17,13 @@ export class BubbleHandler3 extends Component {
     console.log(position);
     this.setState({ ...this.state, isRunning: false, position: position });
   };
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.isRunning !== prevState.isRunning ){
+      this.setState({isRunning:true} )
+      console.log(this.state.position)
+      return true
+    }
+  }
 
   render() {
     const { isRunning } = this.state;
