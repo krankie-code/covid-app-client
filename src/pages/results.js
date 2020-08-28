@@ -31,7 +31,7 @@ const Results = (props) => {
     "In case you have a fever, cough, or dificculties for breathing, seek medical attention",
   ];
 
-  const random = Math.floor(Math.random() * arrayPrevent.length + 1);
+  const random = Math.floor(Math.random() * arrayPrevent.length);
   const randomSentence = arrayPrevent[random];
 
   var text;
