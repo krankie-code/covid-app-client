@@ -4,7 +4,7 @@
 
 ## Description
 
-This is an app to document adults and children about COVID-19 . 
+This is a mobile app to educate adults and children about COVID-19 . SIP 
 
 ## User Stories
 
