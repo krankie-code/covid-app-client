@@ -143,7 +143,7 @@ The url to your repository and to your deployed project
 
 [Server repository Link](https://github.com/krankie-code/covid-app-server)
 
-[Deployed App Link](http://heroku.com/)
+[Deployed App Link](https://project-covid-app.herokuapp.com/)
 
 ### Slides
 
